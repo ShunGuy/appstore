@@ -1,19 +1,31 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+# Use turbolinks
+gem 'turbolinks'
+
+# Use react on rails
+gem 'react_on_rails', "~> 6"
+gem 'mini_racer', platforms: :ruby
+
+group :production do
+  gem 'rails_12factor'
+  gem 'unicorn'
+  gem 'pg'
+end
 
 group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
@@ -28,4 +40,3 @@ group :development do
   # Better debugger
   gem 'pry-rails'
 end
-

@@ -1,0 +1,24 @@
+{
+  "name": "appstore",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "6.9.0",
+    "npm": "4.1.1"
+  },
+  "scripts": {
+    "postinstall": "cd ./client && npm install",
+    "test": "npm run build:test && npm run lint && rspec",
+    "lint": "cd client && npm run lint",
+    "install-react-on-rails": "cd client && npm run install-react-on-rails",
+    "build:clean": "rm -r app/assets/webpack/* || true",
+    "build:production": "(cd client && npm run build:production --silent)",
+    "build": "(cd client && npm run build --silent",
+    "build:dev": "(cd client && npm run build:dev --silent)",
+    "hot-assets": "(cd client && npm run hot-assets)"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ]
+}

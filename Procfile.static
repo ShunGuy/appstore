@@ -1,0 +1,5 @@
+# Run Rails without hot reloading (static assets).
+rails: RAILS_ENV=development REACT_ON_RAILS_ENV= rails s -b 0.0.0.0
+
+# Build client assets, watching for changes.
+rails-client-assets: sh -c 'npm run build:dev'
