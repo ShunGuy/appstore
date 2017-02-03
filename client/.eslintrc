@@ -1,0 +1,19 @@
+{
+  parser: 'babel-eslint',
+  extends: 'airbnb',
+  env: {
+    jest: true,
+    browser: true,
+  },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'webpack.base.config.js',
+      },
+    },
+  },
+  rules: {
+    semi: [2, 'never'],
+  },
+}
+

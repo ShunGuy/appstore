@@ -4,18 +4,18 @@
 
 /* eslint-disable comma-dangle */
 
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const config = require('./webpack.base.config');
+const config = require('./webpack.base.config')
 
-const devBuild = process.env.NODE_ENV !== 'production';
+const devBuild = process.env.NODE_ENV !== 'production'
 
 config.output = {
   filename: '[name]-bundle.js',
   path: '../app/assets/webpack',
   publicPath: '/assets/',
-};
+}
 
 // See webpack.base.config for adding modules common to both the webpack dev server and rails
 
@@ -51,18 +51,18 @@ config.module.loaders.push(
     test: require.resolve('jquery-ujs'),
     loader: 'imports?jQuery=jquery',
   }
-);
+)
 
 config.plugins.push(
   new ExtractTextPlugin('[name]-bundle.css', { allChunks: true }),
   new webpack.optimize.DedupePlugin()
-);
+)
 
 if (devBuild) {
-  console.log('Webpack dev build for Rails'); // eslint-disable-line no-console
-  config.devtool = 'eval-source-map';
+  console.log('Webpack dev build for Rails') // eslint-disable-line no-console
+  config.devtool = 'eval-source-map'
 } else {
-  console.log('Webpack production build for Rails'); // eslint-disable-line no-console
+  console.log('Webpack production build for Rails') // eslint-disable-line no-console
 }
 
-module.exports = config;
+module.exports = config

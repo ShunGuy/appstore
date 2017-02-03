@@ -1,12 +1,12 @@
 // Common client-side webpack configuration used by
 // webpack.rails.hot.config and webpack.rails.build.config.
 
-const webpack = require('webpack');
-const path = require('path');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack')
+const path = require('path')
+const autoprefixer = require('autoprefixer')
 
-const devBuild = process.env.NODE_ENV !== 'production';
-const nodeEnv = devBuild ? 'development' : 'production';
+const devBuild = process.env.NODE_ENV !== 'production'
+const nodeEnv = devBuild ? 'development' : 'production'
 
 module.exports = {
 
@@ -82,4 +82,4 @@ module.exports = {
   // (so don't need to @import them explicitly)
   // https://github.com/shakacode/sass-resources-loader
   sassResources: ['./app/assets/styles/app-variables.scss'],
-};
+}
