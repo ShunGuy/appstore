@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203222239) do
+ActiveRecord::Schema.define(version: 20170205112946) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170203222239) do
     t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "objectID",   default: ""
   end
 
   add_index "items", ["name"], name: "index_items_on_name"
