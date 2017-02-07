@@ -1,13 +1,13 @@
 import React, { PropTypes, Component } from 'react'
 import { Panel, Form, FormGroup, Col, Button } from 'react-bootstrap'
 import classNames from 'classnames'
-import { updateItem, createItem } from './api'
+import { updateApp, createApp } from './api'
 import { fields, categories, validateForm } from './Utils'
 import Header from '../App/Header'
-import ItemInput from './ItemInput'
-import styles from './ItemForm.scss'
+import AppInput from './AppInput'
+import styles from './AppForm.scss'
 
-class ItemForm extends Component {
+class AppForm extends Component {
   constructor(props) {
     super(props)
     const { name, image, link, category, rank } = props
@@ -40,9 +40,9 @@ class ItemForm extends Component {
   }
 
   handleChange(event) {
-    const item = { [event.target.id]: event.target.value }
-    this.setState({ ...item })
-    const errors = validateForm({ ...this.state, ...item })
+    const app = { [event.target.id]: event.target.value }
+    this.setState({ ...app })
+    const errors = validateForm({ ...this.state, ...app })
     this.setState({ errors: { ...errors } })
   }
 
@@ -51,9 +51,9 @@ class ItemForm extends Component {
     let response
 
     if (id) {
-      response = await updateItem({ ...this.state, id })
+      response = await updateApp({ ...this.state, id })
     } else {
-      response = await createItem(this.state)
+      response = await createApp(this.state)
     }
 
     if (response.errors) {
@@ -103,14 +103,14 @@ class ItemForm extends Component {
 
       if (field === 'category') {
         return (
-          <ItemInput {...props} >
+          <AppInput {...props} >
             {categories.map(cat =>
               <option key={cat} value={cat}>{cat}</option>,
             )}
-          </ItemInput>
+          </AppInput>
         )
       }
-      return <ItemInput {...props} />
+      return <AppInput {...props} />
     })
   }
 
@@ -145,7 +145,7 @@ class ItemForm extends Component {
   }
 }
 
-ItemForm.defaultProps = {
+AppForm.defaultProps = {
   id: null,
   name: '',
   image: '',
@@ -154,7 +154,7 @@ ItemForm.defaultProps = {
   rank: 1,
 }
 
-ItemForm.propTypes = {
+AppForm.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   image: PropTypes.string,
@@ -163,4 +163,4 @@ ItemForm.propTypes = {
   rank: PropTypes.number,
 }
 
-export default ItemForm
+export default AppForm

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { InstantSearch } from 'react-instantsearch/dom'
 import algoliasearch from 'algoliasearch'
 import Header from './Header'
-import SearchItem from '../Search/SearchItem'
+import SearchApp from '../Search/SearchApp'
 import styles from './App.scss'
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
       >
         <Header withSearchBox />
         <div className={classNames('container', styles.container)}>
-          <SearchItem />
+          <SearchApp />
         </div>
       </InstantSearch>
     )

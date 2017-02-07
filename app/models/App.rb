@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class App < ActiveRecord::Base
   include AlgoliaSearch
 
   validates :name, :category, :link, :rank, presence: true
@@ -14,12 +14,12 @@ class Item < ActiveRecord::Base
   end
 
   def self.trigger_sidekiq_worker(record, remove)
-    IndexItemWorker.perform_async(record.id, remove)
+    IndexAppWorker.perform_async(record.id, remove)
   end
 end
 
 
-class IndexItemWorker
+class IndexAppWorker
   include Sidekiq::Worker
 
   def perform(id, remove)
@@ -27,8 +27,8 @@ class IndexItemWorker
       index = Algolia::Index.new("Appstore")
       index.delete_object(id)
     else
-      item = Item.find(id)
-      item.index!
+      app = App.find(id)
+      app.index!
     end
   end
 end

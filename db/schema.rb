@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206202315) do
+ActiveRecord::Schema.define(version: 20170207212930) do
 
-  create_table "items", force: :cascade do |t|
+  create_table "apps", force: :cascade do |t|
     t.string   "name",                    null: false
     t.text     "image"
     t.text     "link",                    null: false
@@ -24,6 +24,6 @@ ActiveRecord::Schema.define(version: 20170206202315) do
     t.string   "objectID",   default: ""
   end
 
-  add_index "items", ["name"], name: "index_items_on_name"
+  add_index "apps", ["name"], name: "index_apps_on_name"
 
 end

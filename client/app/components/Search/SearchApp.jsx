@@ -5,17 +5,17 @@ import {
   Pagination,
   CurrentRefinements,
 } from 'react-instantsearch/dom'
-import Item from './Item'
+import App from './App'
 
-function SearchItem() {
+function SearchApp() {
   return (
     <div>
       <CurrentRefinements />
       <RefinementList attributeName="category" />
-      <Hits hitComponent={Item} />
+      <Hits hitComponent={App} />
       <Pagination />
     </div>
   )
 }
 
-export default SearchItem
+export default SearchApp

@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { FormGroup, Col, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
-import styles from './ItemInput.scss'
+import styles from './AppInput.scss'
 
-function ItemInput({
+function AppInput({
   name,
   children,
   value,
@@ -47,13 +47,13 @@ function ItemInput({
   )
 }
 
-ItemInput.defaultProps = {
+AppInput.defaultProps = {
   children: null,
   componentClass: 'input',
   errors: [],
 }
 
-ItemInput.propTypes = {
+AppInput.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -67,4 +67,4 @@ ItemInput.propTypes = {
   errors: PropTypes.arrayOf(PropTypes.string),
 }
 
-export default ItemInput
+export default AppInput

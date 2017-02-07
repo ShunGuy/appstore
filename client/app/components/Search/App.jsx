@@ -2,14 +2,14 @@ import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 import { Highlight } from 'react-instantsearch/dom'
 import { Button, Glyphicon } from 'react-bootstrap'
-import deleteItem from './api'
-import styles from './Item.scss'
+import deleteApp from './api'
+import styles from './App.scss'
 
 function handleError(e) {
   e.target.setAttribute('src', 'http://placehold.it/175x175')
 }
 
-class Item extends Component {
+class App extends Component {
   constructor(props) {
     super(props)
     this.delete = this.delete.bind(this)
@@ -18,7 +18,7 @@ class Item extends Component {
 
   delete() {
     const { id, objectID } = this.props.hit
-    deleteItem(id, objectID)
+    deleteApp(id, objectID)
     this.setState({ show: false })
   }
 
@@ -27,7 +27,7 @@ class Item extends Component {
     const { show } = this.state
 
     return (
-      <div className={classNames(styles.item, { [styles.show]: show })}>
+      <div className={classNames(styles.app, { [styles.show]: show })}>
         <img
           src={image}
           className={styles.image}
@@ -58,7 +58,7 @@ class Item extends Component {
               className={styles.btn}
               bsSize="xsmall"
               onClick={this.edit}
-              href={`items/${id}/edit`}
+              href={`apps/${id}/edit`}
             >
               <Glyphicon glyph="edit" />
             </Button>
@@ -69,7 +69,7 @@ class Item extends Component {
   }
 }
 
-Item.propTypes = {
+App.propTypes = {
   hit: PropTypes.shape({
     objectID: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
@@ -81,4 +81,4 @@ Item.propTypes = {
   }).isRequired,
 }
 
-export default Item
+export default App

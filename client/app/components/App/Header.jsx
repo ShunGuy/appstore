@@ -17,7 +17,7 @@ function Header({ withSearchBox }) {
       <Navbar.Collapse>
         <Nav className={styles.links}>
           <NavItem eventKey={1} href="/">Home</NavItem>
-          <NavItem eventKey={1} href="/items/new">New App</NavItem>
+          <NavItem eventKey={1} href="/apps/new">New App</NavItem>
         </Nav>
         <Navbar.Form pullLeft>
           { withSearchBox && (

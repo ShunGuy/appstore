@@ -2,12 +2,12 @@ import ReactOnRails from 'react-on-rails'
 
 import App from '../components/App/App'
 import Header from '../components/App/Header'
-import SearchItem from '../components/Search/SearchItem'
-import ItemForm from '../components/Item/ItemForm'
+import SearchApp from '../components/Search/SearchApp'
+import AppForm from '../components/Apps/AppForm'
 
 ReactOnRails.register({
   App,
   Header,
-  SearchItem,
-  ItemForm,
+  SearchApp,
+  AppForm,
 })
