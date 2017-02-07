@@ -83,4 +83,10 @@ Most of the code simply fit in:
 
 ## TODO
 
--
+- Add tests front/back
+- Add react-router
+- Add Redux
+- Add Redux-form
+- Cleaner management algolia index
+...
+
