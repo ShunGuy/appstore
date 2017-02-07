@@ -1,0 +1,34 @@
+.item {
+  box-shadow: 0 0 10px 2px rgba(204,204,204,0.15);
+  border: 1px solid rgba(204,204,204,0.4);
+  margin: 10px 0px 10px 0px;
+  border-radius: 3px;
+  padding: 15px;
+  position: relative;
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+.image {
+  width: 175px;
+  height: 175px;
+  background: #CCCCCC;
+  border-radius: 30px;
+}
+
+.content {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.actions {
+  margin-top: auto;
+}
