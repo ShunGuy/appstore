@@ -1,25 +1,57 @@
-# AppStore bootstrapped app
-
-This application is a small bootstraped app to remove the burden of creating a Rails + React application.
-
-This repo uses Rails 4 with [`react_on_rails`](https://github.com/shakacode/react_on_rails/).
-The generated code was bit modified to simplify things and activate live-reloading.
+# Algolia App Store
 
 ## Heroku
+[Algolia App Store](https://vast-hamlet-23911.herokuapp.com)
 
-In order to have a live server to check out the end result, we've set-up this repository to be installable through this one-click button:
+## App store
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+The app is a small **AppStore admin page**.
 
-This comes in handy for multiple reasons:
-- You directly have a git repo
-- You can deploy for free your code
-- It will automatically set up a small database
-- Once initialized, deploying is as easy as `git push heroku master`, it automatically handles initialization, dependencies downloads, etc.
+The app is comprised of 2 parts:
 
-However, you can definitely decide to host it somewhere else if you'd like!
+- The Ruby backend, responsible for:
+  - handling the HTTP routing;
+  - storing items in a database;
+  - indexing items in an Algolia index when they change.
 
-*Note*: Locally, we're using `sqlite`. Heroku has no file persistence, so we're using `postgresql` in production.
+- The JS frontend, responsible for displaying two pages:
+  - one displaying a form to add records to the index;
+  - one displaying a search page.
+
+### Backend
+
+The backend is a minimal Rails application using the [algoliasearch-rails](https://github.com/algolia/algoliasearch-rails) integration.
+
+The app implements the following endpoints:
+
+  - `GET /` => Render an HTML page displaying the JS frontend app
+  - `POST /api/1/apps` => Add an app (as a JSON object) to the DB and return its `id`
+  - `PUT /api/1/apps/:id` => Update an app (as a JSON object) to the DB
+  - `DELETE /api/1/apps/:id` => Delete an app from the DB
+
+The items are indexed in Algolia.
+
+### Frontend
+
+The frontend is developed with React.
+
+#### Form page
+
+The form page is built using React to handle the data flow.
+
+It:
+  - display a form to create a new item
+  - validate that the data has the correct format
+  - use the Backend API to add the item to the DB and Algolia
+
+#### Search page
+
+The search page use [instantsearch](https://github.com/algolia/instantsearch.js).
+
+It:
+  - display a searchbox to search in the items using Algolia
+  - show the results as a list
+  - it is possible to delete any item in the results using the Backend API
 
 ## Development
 
@@ -27,20 +59,28 @@ Dependencies:
 - `ruby` 2.3.1
 - `nodejs` (Tested with node v6 and v7)
 - `foreman`: `gem install foreman`
+- `React`
 
 Initialize:
 - `bundle`
 - `npm install` or `yarn`
 - `bundle exec rake db:create`
+- `bundle exec rake db:seed`
 
 Run with hot reloading: `foreman start -f Procfile.hot`
 
 Run without hot reloading: `foreman start -f Procfile.static`
 
+Start redis: `redis-server`
+
 ## Repo architecture
 
-This is a usual Rails app with a new `client/` folder which holds `webpack` and React components.  
-Most of your code should simply fit in:
+This is a usual Rails app with a new `client/` folder which holds `webpack` and React components.
+Most of the code simply fit in:
 - `app/controllers`
 - `app/views`
 - `client/app/components`
+
+## TODO
+
+-
