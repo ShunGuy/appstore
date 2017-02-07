@@ -87,6 +87,7 @@ Most of the code simply fit in:
 - Add react-router
 - Add Redux
 - Add Redux-form
+- Better client validation
 - Cleaner management algolia index
-...
+- ...
 
